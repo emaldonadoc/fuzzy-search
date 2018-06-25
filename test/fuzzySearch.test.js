@@ -16,17 +16,8 @@ const FILE_DATA_MOCK = [
 ];
 
 beforeEach(() => {
-  fs.writeFileSync(PATH_FILE, '[ ' +
-    '{' +
-    '"name": "Alberto Vera Padrón"' +
-    '},' +
-    '{' +
-    '"name": "Juan Antonio Perez"' +
-    '},' +
-    '{' +
-    '"name": "Rodolfo Juarez Fernandez"' +
-    '}' +
-    ']',
+  fs.writeFileSync(PATH_FILE,
+    JSON.stringify(FILE_DATA_MOCK),
     { encoding: 'utf8', flag: 'w' });
 });
 
