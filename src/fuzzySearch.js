@@ -11,7 +11,10 @@ export default {
     let i = 3;
     const length = mapArguments.length;
     for (i; i < length; i++) {
-      let keyValue = mapArguments[i].replace('{', '').replace('}', '').split(':');
+      let keyValue = mapArguments[i]
+        .replace('{', '')
+        .replace('}', '')
+        .split(':');
       json[keyValue[0]] = keyValue[1];
     }
     return json;
@@ -26,7 +29,10 @@ export default {
   add(pathFile, newUser) {
     this.fileData.push(newUser);
     this.fileData = _.sortBy(this.fileData, ['name']);
-    fs.writeFileSync(pathFile, JSON.stringify(this.fileData), { encoding: 'utf8', flag: 'w' });
+    fs.writeFileSync(pathFile,
+      JSON.stringify(this.fileData),
+      { encoding: 'utf8', flag: 'w' });
+    console.log('Usuario agregado');
   }
 
 };
