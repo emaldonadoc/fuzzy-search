@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "tdd": "jest --watchAll"
+    "tdd": "jest --watchAll",
+    "build": "babel --presets es2015 src --out-dir dist"
   },
   "author": "Emmanuel Maldonado Cuña",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",

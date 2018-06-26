@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-var fuzzySearch = require("./fuzzySearch");
+var fuzzySearch = require("./fuzzySearch").default;
 
-
-console.log('hello there', process.argv);
 console.log(fuzzySearch.parseCommandLine(process.argv));
