@@ -33,6 +33,10 @@ export default {
       JSON.stringify(this.fileData),
       { encoding: 'utf8', flag: 'w' });
     console.log('Usuario agregado');
+  },
+
+  list() {
+    return _.sortBy(this.fileData, ['name']);
   }
 
 };

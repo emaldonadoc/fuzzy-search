@@ -47,6 +47,13 @@ test('Must read file', () => {
 
 });
 
+test('Must show list', () => {
+  fuzzySearch.fileData = FILE_DATA_MOCK;
+
+  const list = fuzzySearch.list();
+  expect(list).toEqual(FILE_DATA_MOCK);
+});
+
 test('Must add new user in sorted list', () => {
   let newUser = { name: 'Diego Zarate' };
   fuzzySearch.fileData = FILE_DATA_MOCK;
