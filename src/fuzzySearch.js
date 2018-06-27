@@ -41,10 +41,10 @@ export default {
     return _.sortBy(this.fileData, ['name']);
   },
 
-  init(argvs) {
-    const option = argvs[2];
+  init(argvs) {    
     this.readFile(this.pathFile).then((d) => {
       this.fileData = d;
+      const option = argvs[2];
       const value = this.parseCommandLine(argvs)
       const result = this[option](this.pathFile, value);
       console.log(result);
