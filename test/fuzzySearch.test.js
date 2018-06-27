@@ -66,3 +66,21 @@ test('Must add new user in sorted list', () => {
     expect(lastUsr.name).toEqual(newUser.name);
   });
 });
+
+test("Should return min Index from array", () => {
+  const values = [2, 3, 1, 4, 12];
+  const valueLengthMax = 7;
+  expect(fuzzySearch.getIndexMin(values, valueLengthMax)).toEqual(2);
+});
+
+test("Should return user found", () => {
+  fuzzySearch.fileData = FILE_DATA_MOCK;
+  expect(fuzzySearch.search(null, { name: 'Alver' }))
+    .toEqual([{ name: 'Alberto Vera Padrón' }]);
+});
+
+test("Should return empty array when user doesnt found", () => {
+  fuzzySearch.fileData = FILE_DATA_MOCK;
+  expect(fuzzySearch.search(null, { name: 'Emmanuel' }))
+    .toEqual([]);
+});

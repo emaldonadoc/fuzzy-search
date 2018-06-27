@@ -1,4 +1,4 @@
-export default (x, y) => {
+export default (x, y) => {  
   let distance = 0;
   let i = 0;
   const length = x.length
@@ -7,7 +7,6 @@ export default (x, y) => {
       distance++;
     }
   }
-
   return distance;
 }
 

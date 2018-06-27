@@ -1,6 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import fsPromise from 'fs-readfile-promise';
+import hammingDistance from './hammingDistance';
 
 export default {
 
@@ -41,7 +42,28 @@ export default {
     return _.sortBy(this.fileData, ['name']);
   },
 
-  init(argvs) {    
+  getIndexMin(distances, valueLength) {
+    let minIndex = -1;
+    let min = valueLength;
+    distances.forEach((d, i) => {
+      if (d < min) {
+        min = d;
+        minIndex = i;
+      }
+    });
+    return minIndex;
+  },
+
+  search(_, userToSearch) {
+    let distances = [];
+    this.fileData.forEach((user) => {
+      distances.push(hammingDistance(userToSearch.name, user.name));
+    });
+    const index = this.getIndexMin(distances, userToSearch.name.length);
+    return index > -1 ? [this.fileData[index]] : [];
+  },
+
+  init(argvs) {
     this.readFile(this.pathFile).then((d) => {
       this.fileData = d;
       const option = argvs[2];
