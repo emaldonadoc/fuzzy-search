@@ -4,6 +4,8 @@ import fsPromise from 'fs-readfile-promise';
 
 export default {
 
+  pathFile: '../assets/fuzzy-search.txt',
+
   fileData: [],
 
   parseCommandLine(mapArguments) {
@@ -32,11 +34,21 @@ export default {
     fs.writeFileSync(pathFile,
       JSON.stringify(this.fileData),
       { encoding: 'utf8', flag: 'w' });
-    console.log('Usuario agregado');
+    return 'Usuario agregado';
   },
 
   list() {
     return _.sortBy(this.fileData, ['name']);
+  },
+
+  init(argvs) {
+    const option = argvs[2];
+    this.readFile(this.pathFile).then((d) => {
+      this.fileData = d;
+      const value = this.parseCommandLine(argvs)
+      const result = this[option](this.pathFile, value);
+      console.log(result);
+    });
   }
 
 };
