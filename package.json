@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "tdd": "jest --watchAll",
     "build": "babel --presets es2015 src --out-dir dist"
   },
