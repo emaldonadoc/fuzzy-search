@@ -17,10 +17,15 @@ Se ha implementado una busqueda difusa mediante el algoritmo Hamming Distance. [
 > npm install ó npm i
 -	Compilar el proyecto y poder utilizar el CLI
 > npm run build
+
 > cd dist/
+
 >./cli.js [option] [data]
+
 >./cli.js list
+
 >./cli.js add {'name':'Juan Perez'}
+
 >./cli.js search {'name':'Juan'}
 
 **Correr Pruebas**
