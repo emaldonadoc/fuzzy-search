@@ -23,8 +23,8 @@ export default {
     return json;
   },
 
-  readFile(pathFile) {
-    return fsPromise(pathFile).then((d) => {
+  readFile(pathFile) {    
+    return fsPromise(pathFile).then((d) => {      
       return JSON.parse(d)
     });
   },
@@ -64,12 +64,11 @@ export default {
   },
 
   init(argvs) {
-    this.readFile(this.pathFile).then((d) => {
+    return this.readFile(this.pathFile).then((d) => {      
       this.fileData = d;
       const option = argvs[2];
       const value = this.parseCommandLine(argvs)
-      const result = this[option](this.pathFile, value);
-      console.log(result);
+      return this[option](this.pathFile, value);
     });
   }
 
