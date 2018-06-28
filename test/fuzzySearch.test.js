@@ -69,7 +69,7 @@ test('Must add new user in sorted list', () => {
   fuzzySearch.fileData = FILE_DATA_MOCK;
   fuzzySearch.add(PATH_FILE, newUser);
 
-  fs.readFile(PATH_FILE, (e, d) => {
+  fs.readFileSync(PATH_FILE, (e, d) => {
     console.log(d);
     let json = JSON.parse(d);
     let lastUsr = json[1];
@@ -87,13 +87,13 @@ test("Should return min Index from array", () => {
 test("Should return user found", () => {
   fuzzySearch.fileData = FILE_DATA_MOCK;
   expect(fuzzySearch.search(null, { name: 'Alver' }))
-    .toEqual([{ name: 'Alberto Vera Padrón' }]);
+    .toEqual({ name: 'Alberto Vera Padrón' });
 });
 
 test("Should return empty array when user doesnt found", () => {
   fuzzySearch.fileData = FILE_DATA_MOCK;
   expect(fuzzySearch.search(null, { name: 'Emmanuel' }))
-    .toEqual([]);
+    .toEqual('Sin coincidencias');
 });
 
 test('Must call function by option', () => {

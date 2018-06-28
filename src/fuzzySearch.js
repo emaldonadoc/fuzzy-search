@@ -23,8 +23,8 @@ export default {
     return json;
   },
 
-  readFile(pathFile) {    
-    return fsPromise(pathFile).then((d) => {      
+  readFile(pathFile) {
+    return fsPromise(pathFile).then((d) => {
       return JSON.parse(d)
     });
   },
@@ -60,11 +60,11 @@ export default {
       distances.push(hammingDistance(userToSearch.name, user.name));
     });
     const index = this.getIndexMin(distances, userToSearch.name.length);
-    return index > -1 ? [this.fileData[index]] : [];
+    return this.fileData[index] || 'Sin coincidencias';
   },
 
   init(argvs) {
-    return this.readFile(this.pathFile).then((d) => {      
+    return this.readFile(this.pathFile).then((d) => {
       this.fileData = d;
       const option = argvs[2];
       const value = this.parseCommandLine(argvs)
